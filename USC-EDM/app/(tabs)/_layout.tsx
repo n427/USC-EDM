@@ -34,7 +34,7 @@ export default function TabLayout() {
         options={{
           title: 'Tickets',
           tabBarIcon: ({ color, focused }) => (
-            <AntDesign name={focused ? 'exclamationcircle' : 'exclamationcircleo'} color={color} size={24} />
+            <Ionicons name={focused ? 'ticket-sharp' : 'ticket-outline'} color={color} size={24} />
           ),
         }}
       />
@@ -44,7 +44,7 @@ export default function TabLayout() {
         options={{
           title: 'Message',
           tabBarIcon: ({ color, focused }) => (
-            <AntDesign name={focused ? 'exclamationcircle' : 'exclamationcircleo'} color={color} size={24} />
+            <Ionicons name={focused ? 'chatbubble-ellipses-sharp' : 'chatbubble-ellipses-outline'} color={color} size={24} />
           ),
         }}
       />
