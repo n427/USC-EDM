@@ -8,7 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 export default function RewardsScreen() {
   const openMessagesApp = () => {
     const message = "Hey! I want to invite you to join me at an upcoming event. Register with my referral link to get special access!";
-    
+    // Set up 3rd party referral managment, include that in message when done
     if (Platform.OS === 'ios') {
       Linking.openURL(`sms:&body=${encodeURIComponent(message)}`);
     } else if (Platform.OS === 'android') {
