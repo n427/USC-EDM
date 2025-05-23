@@ -122,7 +122,7 @@ export default function FeedScreen() {
           <TouchableOpacity>
             <MaterialIcons name="shopping-cart" size={24} color="#990000" style={{ marginRight: 12 }} />
           </TouchableOpacity>
-          <Ionicons name="person-circle-outline" size={26} color="#990000" />
+          <Feather name="bell" size={24} color="#990000" />
         </View>
       </View>
 
