@@ -16,7 +16,7 @@ import {
 import { router } from 'expo-router';
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 import type { ImageSourcePropType } from 'react-native';
-import CameraButton from '../components/CameraActionSheet'; // adjust path if needed
+import CameraButton from '../../components/CameraActionSheet'; // adjust path if needed
 
 const { width, height } = Dimensions.get('window');
 

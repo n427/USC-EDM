@@ -4,7 +4,7 @@ import { SafeAreaView, Platform, View, Text, StyleSheet, TouchableOpacity, Anima
 import { usePathname, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
-export default function TicketsScreen() {
+export default function TicketsLayout() {
   const router = useRouter();
   const pathname = usePathname();
   
