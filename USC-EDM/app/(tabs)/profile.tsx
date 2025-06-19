@@ -10,6 +10,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { Ionicons, Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 const screenWidth = Dimensions.get('window').width;
 const tileSize = screenWidth / 3 - 12; // 3 columns, with padding
@@ -26,6 +27,7 @@ const posts = [
 
 export default function ProfileScreen({ navigation }: any) {
   const [activeTab, setActiveTab] = useState<'All' | 'Photos' | 'Videos'>('All');
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const renderPost = ({ item }: { item: any }) => {
     if (item === 'addButton') {
@@ -69,10 +71,10 @@ export default function ProfileScreen({ navigation }: any) {
           </View>
         </View>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.editButton}>
+          <TouchableOpacity style={styles.editButton} onPress={() => router.push('/editProfile')}>
             <Text style={styles.editText}>Edit Profile</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.settingsButton}>
+          <TouchableOpacity style={styles.settingsButton} onPress={() => setShowSettingsModal(true)}>
             <Feather name="settings" size={17} color="#990000" />
           </TouchableOpacity>
         </View>
@@ -92,11 +94,59 @@ export default function ProfileScreen({ navigation }: any) {
         numColumns={3}
         contentContainerStyle={styles.grid}
       />
+      {showSettingsModal && (
+  <View style={styles.modalOverlay}>
+    <View style={styles.modalContent}>
+      <TouchableOpacity onPress={() => {
+        console.log('Logging out...');
+        setShowSettingsModal(false);
+        router.replace('/auth/auth')
+      }}>
+        <Text style={styles.modalOption}>Log Out</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+        console.log('Deleting account...');
+        setShowSettingsModal(false);
+        router.replace('/auth/auth')
+      }}>
+        <Text style={[styles.modalOption, { color: '#990000' }]}>Delete Account</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => setShowSettingsModal(false)}>
+        <Text style={styles.modalCancel}>Cancel</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+)}
+
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  modalOverlay: {
+  position: 'absolute',
+  top: 0, bottom: 0, left: 0, right: 0,
+  backgroundColor: 'rgba(0,0,0,0.4)',
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 99
+},
+modalContent: {
+  backgroundColor: '#fff',
+  borderRadius: 12,
+  width: '80%',
+  padding: 20,
+  alignItems: 'center'
+},
+modalOption: {
+  fontSize: 16,
+  paddingVertical: 12
+},
+modalCancel: {
+  fontSize: 14,
+  marginTop: 10,
+  color: 'gray'
+},
   container: { flex: 1, backgroundColor: '#fff' },
   banner: { alignItems: 'center', padding: 20 },
   avatar: { width: 80, height: 80, borderRadius: 40, marginBottom: 8 },

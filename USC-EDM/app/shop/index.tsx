@@ -68,6 +68,11 @@ export default function ShopScreen() {
 
   return (
     <ScrollView style={styles.container}>
+      
+    <TouchableOpacity onPress={() => router.back()} style={{ position: 'absolute', top: 16, left: 3, zIndex: 10, marginTop: 30 }}>
+        <Ionicons name="arrow-back" size={24} color="#FFD700" />
+    </TouchableOpacity>
+      
       <Text style={styles.title}>Redeem Points</Text>
       <View style={styles.balanceRow}>
         <Ionicons name="wallet" size={16} color="#FFD700" style={{ marginRight: 6 }} />
@@ -138,7 +143,7 @@ export default function ShopScreen() {
 }
 
 const styles = StyleSheet.create({
-  title: {color: '#FFD700', fontWeight: 'bold', fontSize: 50, marginTop: 10, marginBottom: 5},
+  title: {color: '#FFD700', fontWeight: 'bold', fontSize: 50, marginTop: 80, marginBottom: 5},
   container: { flex: 1, backgroundColor: '#8c0000', paddingHorizontal: 16, paddingTop: 24 },
   backButton: { marginTop: 10, marginBottom: 4, alignSelf: 'flex-start' },
   balanceRow: {

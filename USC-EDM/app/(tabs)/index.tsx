@@ -16,6 +16,7 @@ import {
 import { router } from 'expo-router';
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 import type { ImageSourcePropType } from 'react-native';
+import CameraButton from '../components/CameraActionSheet'; // adjust path if needed
 
 const { width, height } = Dimensions.get('window');
 
@@ -225,16 +226,14 @@ export default function HomeScreen(): JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Ionicons name="camera" size={24} color="#990000" />
-        </TouchableOpacity>
+        <CameraButton />
         <Text style={styles.headerTitle}>EDMA:USC</Text>
         <View style={styles.headerIcons}>
           <TouchableOpacity onPress={() => router.push('/shop')}>
             <Feather name="shopping-cart" size={22} color="#990000" />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <AntDesign name="notification" size={22} color="#990000" />
+          <TouchableOpacity onPress={() => router.push('/yearbook')}>
+            <AntDesign name="book" size={22} color="#990000" />
           </TouchableOpacity>
         </View>
       </View>
